@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+
+  "name": "Youtube Watch Later Button",
+  "short_name": "Youtube Watch Later Button",
+  "description": "Shows a watch later button in Youtube's video pages.",
+  "version": "1.0",
+
+  "permissions": ["*://*.youtube.com/watch*"],
+
+
+  "icons": {
+    "128": "images/default-128.png",
+    "48": "images/default-48.png",
+    "24": "images/default-24.png"
+  },
+  "content_scripts": [{
+    "matches": ["*://*.youtube.com/watch*"],
+    "js": [
+      "content.js"
+    ]
+  }]
+}
