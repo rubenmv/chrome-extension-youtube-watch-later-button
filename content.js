@@ -1,6 +1,7 @@
 /**
  * Wait for page to load
  */
+var button = null;
 
 var domChecker = window.setInterval(function () {
   if (document.readyState === "complete") {
@@ -12,8 +13,19 @@ var domChecker = window.setInterval(function () {
 
 
 function createButton() {
-  var buttonHTML = "<button class='ywlb yt-uix-button yt-uix-button-size-small yt-uix-button-default yt-uix-button-empty yt-uix-button-has-icon no-icon-markup addto-button spf-nolink hide-until-delayloaded addto-watch-later-button yt-uix-tooltip' type='button' onclick=';return false;' role='button' title='Watch Later' data-video-ids='" + document.querySelector("[itemprop=videoId]").content + "' data-tooltip-text='Watch Later' aria-labelledby='yt-uix-tooltip163-arialabel'></button>";
-  
+  var buttonHTML = "<button id='ywlb' class='ywlb yt-uix-button yt-uix-button-size-small yt-uix-button-default yt-uix-button-empty yt-uix-button-has-icon no-icon-markup addto-button spf-nolink hide-until-delayloaded addto-watch-later-button yt-uix-tooltip' type='button' onclick=';return false;' role='button' title='Watch Later' data-video-ids='" + document.querySelector("[itemprop=videoId]").content + "' data-tooltip-text='Watch Later' aria-labelledby='yt-uix-tooltip163-arialabel'></button>";
+
   var watchButtons = document.getElementById("watch8-secondary-actions");
   watchButtons.insertAdjacentHTML("afterbegin", buttonHTML);
+
+  button = document.getElementById('ywlb');
+  if (button) {
+    button.addEventListener('click', removeButton);
+  }
+}
+
+function removeButton() {
+  if (button) {
+    button.parentNode.removeChild(button);
+  }
 }
